@@ -1,6 +1,6 @@
-// styles
-import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Box, ChakraProvider, CSSReset } from "@chakra-ui/react";
 
 // Layouts
 import { Navbar } from "./Components/Navbar";
@@ -18,23 +18,27 @@ import { Info } from "./Pages/Info";
 
 function App() {
   return (
-    <div>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="*" element={<Homepage />} />
-        <Route path="/board-advisory" element={<BoardAdvisory />} />
-        <Route path="/people-agenda" element={<PeopleAgenda />} />
-        <Route path="/tea-for-execution" element={<TeamForExecution />} />
-        <Route path="/BusinessImprovement" element={<BusinessImprovement />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/mete-zadil" element={<MeteZadil />} />
-        <Route path="/info" element={<Info />} />
-      </Routes>
-      <Footer />
-    </div>
+    <ChakraProvider>
+      <CSSReset />
+      <Box minHeight="100vh" display="flex" flexDirection="column">
+        <Navbar />
+        <Box flex="1">
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="*" element={<Homepage />} />
+            <Route path="/board-advisory" element={<BoardAdvisory />} />
+            <Route path="/people-agenda" element={<PeopleAgenda />} />
+            <Route path="/team-for-execution" element={<TeamForExecution />} />
+            <Route path="/business-improvement" element={<BusinessImprovement />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/mete-zadil" element={<MeteZadil />} />
+            <Route path="/info" element={<Info />} />
+          </Routes>
+        </Box>
+        <Footer />
+      </Box>
+    </ChakraProvider>
   );
 }
 
 export default App;
-
